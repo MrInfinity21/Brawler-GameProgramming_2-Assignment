@@ -1,0 +1,34 @@
+{
+    "name": "GameControls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "bc5077d0-a3e9-48b9-b23e-46001092df3c",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "35d4aeb9-0e19-4fb1-98af-e0de64b1eb5b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a52f903d-5688-466d-a5f0-6f0c48e6394d",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

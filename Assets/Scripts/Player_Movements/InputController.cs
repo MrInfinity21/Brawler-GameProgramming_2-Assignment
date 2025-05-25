@@ -27,7 +27,7 @@ public class InputController : MonoBehaviour
         _gameControls.Player.Jump.performed += OnJumpPerformed;
         _gameControls.Player.Jump.canceled += OnJumpCanceled;
         _gameControls.Player.Attack.performed += OnAttackPerformed;
-        _gameControls.Player.Attack.canceled += OnAttackPerformed;
+        _gameControls.Player.Attack.canceled += OnAttackCancelled;
     }
 
     private void OnAttackPerformed(InputAction.CallbackContext context)
@@ -35,6 +35,10 @@ public class InputController : MonoBehaviour
         AttackEvent?.Invoke();
     }
     
+    private void OnAttackCancelled(InputAction.CallbackContext context)
+    {
+        AttackEvent?.Invoke();
+    }
     private void OnDisable()
     {
         _gameControls.Player.Enable();

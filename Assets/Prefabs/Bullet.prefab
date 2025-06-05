@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c43041eaae36a4e98e285132327a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 10
-  projectileLifeTime: 3
+  projectileSpeed: 20
+  projectileLifeTime: 2
   impactParticles: {fileID: 0}
+  speed: 20

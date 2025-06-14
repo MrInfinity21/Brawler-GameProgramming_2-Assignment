@@ -7,14 +7,19 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected Transform muzzle;
     [SerializeField] private float fireRate = .2f;
     [SerializeField] private bool bAutomatic;
-    private bool _autoActive;
-    private bool _onCooldown;
+   
     
     [Header("Ammunition Details")]
     [SerializeField] private int maxAmmo;
     [SerializeField] private int ammoCost = 1;
     private int _currentAmmo;
     
+    private bool _autoActive;
+    private bool _onCooldown;
+
+    [Header("Shooting Settings")] 
+    [SerializeField] private float shootRange = 100f;
+    [SerializeField] private LayerMask shootableLayers;
     private void Start()
     {
         _currentAmmo = maxAmmo;
@@ -32,6 +37,9 @@ public class Weapon : MonoBehaviour
     {
         _currentAmmo = Mathf.Clamp(_currentAmmo - ammoCost, 0, maxAmmo);
         StartCoroutine(InitiateFireCooldown());
+
+        ShootRaycast();
+        
         if(bAutomatic) _autoActive = true;
     }
 
@@ -50,5 +58,25 @@ public class Weapon : MonoBehaviour
         _onCooldown = true;
         yield return new WaitForSeconds(fireRate);
         _onCooldown = false;
+    }
+
+    private void ShootRaycast()
+    {
+        if (Camera.main == null)
+        {
+            Debug.LogWarning("No main camera found");
+            return;
+        }
+
+        Vector3 origin = Camera.main.transform.position;
+        Vector3 direction = Camera.main.transform.forward;
+        
+        Ray ray = new Ray(origin, direction);
+        if (Physics.Raycast(ray, out RaycastHit hit, shootRange, shootableLayers))
+        {
+            Debug.Log($"Hit: {hit.collider.name}");
+        }
+        
+        Debug.DrawRay(ray.origin, ray.direction * shootRange, Color.red, 0.5f);
     }
 }

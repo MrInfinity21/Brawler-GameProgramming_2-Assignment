@@ -21,6 +21,15 @@ public class PlayerCombat : MonoBehaviour
         _inputController.AttackEventCanceled += StopFiring;
     }
 
+    private void OnDestroy()
+    {
+        if (_inputController != null)
+        {
+            _inputController.AttackEvent -= FireWeapon;
+            _inputController.AttackEventCanceled -= StopFiring;
+        }
+    }
+
     void FireWeapon()
     {
         equippedWeapon.Fire();

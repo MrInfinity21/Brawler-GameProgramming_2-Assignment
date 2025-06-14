@@ -90,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
         if (_characterController.isGrounded)
         {
             _verticalVelocity = _movementConfig.baseJumpForce;
-            _verticalVelocity = _movementConfig.baseJumpForce;
         }
     }
     
